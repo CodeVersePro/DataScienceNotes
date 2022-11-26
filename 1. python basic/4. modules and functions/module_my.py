@@ -68,3 +68,17 @@ def fibo(num):
         fibo_list.append(fibo_elem)
 
     return print(fibo_list[-1])
+
+
+
+def sum_natural(n):
+
+    start = 1
+    sum = 0
+    while start<= n:
+
+        sum = sum + start
+       
+        start += 1
+
+    return print(sum)
