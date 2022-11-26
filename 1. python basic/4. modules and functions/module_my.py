@@ -55,3 +55,16 @@ def trigno_cal(input_1):
     print(f'Sin : {sine}')
     print(f'cosine : {cos}')
     print(f'Tan : {tan}')
+
+
+def fibo(num):
+
+    fibo_list = [0,1]
+
+    while len(fibo_list) <= num:
+
+        fibo_elem = fibo_list[-1] + fibo_list [-2]
+
+        fibo_list.append(fibo_elem)
+
+    return print(fibo_list[-1])
