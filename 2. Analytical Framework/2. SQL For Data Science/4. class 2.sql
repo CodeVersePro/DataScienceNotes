@@ -16,3 +16,11 @@ WHERE city LIKE 'B%'
 
 SELECT city FROM city
 WHERE city LIKE 'B___'
+
+SELECT city FROM city
+WHERE city LIKE '%h%'
+
+SELECT * from customer
+
+SELECT * FROM customer
+WHERE first_name ilike 'a%' and last_name ilike 'a%'
