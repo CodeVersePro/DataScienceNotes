@@ -124,8 +124,18 @@ ORDER BY payment_date DESC
 LIMIT 5
 
 /* BETWEEN */
+
 SELECT * FROM payment
-WHERE amount BETWEEN 8 and 9
+
+SELECT * FROM payment
+WHERE amount BETWEEN 2 AND 4
+ORDER BY amount DESC
+
+SELECT * FROM payment
+WHERE amount BETWEEN 5 and 7
+
+SELECT * FROM payment
+WHERE amount not BETWEEN 5 and 7
 
 SELECT * FROM payment
 WHERE payment_date BETWEEN '2007-02-01' AND '2007-02-15'
