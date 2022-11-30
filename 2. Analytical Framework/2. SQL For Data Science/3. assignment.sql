@@ -9,6 +9,11 @@ WHERE amount >= 11 and staff_id = 2
 SELECT COUNT(*) from film
 WHERE left(title,1) = 'J'
 
+/* alternative way fro above problem */
+
+SELECT COUNT(*) FROM film
+WHERE title LIKE 'J%'
+
 /* what customer has the highest customer id whose name start with 'E' and has address id lower then 500 */
 
 select * from customer
