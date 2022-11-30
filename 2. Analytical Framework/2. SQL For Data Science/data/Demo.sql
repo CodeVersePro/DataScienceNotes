@@ -1,9 +1,9 @@
 /* SELECT */
 /* Basic Syntax for SELECT Statement
    SELECT column_name FROM table_name */
-SELECT first_name FROM actor 
+SELECT first_name FROM actor  #select statement to choose columns from table
 
-SELECT first_name, last_name FROM actor 
+SELECT first_name, last_name FROM actor #selecting multiple column
 
 SELECT last_name, first_name FROM actor 
 
@@ -14,9 +14,11 @@ SELECT * FROM actor
 /* DISTINCT */
 /* Basic Syntax for DISTINCT Statement
    SELECT DISTINCT column_name FROM table_name */
-SELECT * FROM film
+SELECT * FROM film #selecting all columns
 
-SELECT DISTINCT release_year FROM film
+SELECT release_year FROM film # we got total 1000 rawas and some of them may be duplicate
+
+SELECT DISTINCT release_year FROM film #geting dictinct values
 
 SELECT DISTINCT(release_year) FROM film
 
@@ -37,11 +39,22 @@ SELECT DISTINCT amount FROM payment
 
 SELECT COUNT(DISTINCT amount) FROM payment
 
+/* we use count to get number of items */
+
+SELECT rental_duration FROM film
+
+SELECT COUNT(rental_duration) from film # total rental_duration items
+
+SELECT distinct rental_duration from film
+
+SELECT COUNT(distinct rental_duration) from film #unique count
+
 /* WHERE */
 /* Basic syntax for WHERE Statement
    SELECT column 1, column 2
    FROM table
    WHERE conditions */
+
    
 SELECT * FROM customer
 
@@ -63,11 +76,25 @@ WHERE rating = 'R' OR rating = 'PG-13'
 SELECT * FROM film
 WHERE rating != 'R'
 
+SELECT * from film
+WHERE rating != 'R' and rating != 'PG-13';
 /* ORDER BY */
 /* Basic Syntax for ORDER BY Statement
    SELECT column 1, column 2
    FROM table
    ORDER BY column 1 ASC/DESC */
+
+SELECT * from film
+WHERE rental_rate > 4
+ORDER BY title asc
+
+SELECT * from film
+WHERE rental_rate > 4
+ORDER BY title DESC
+
+SELECT * from film
+WHERE rental_rate > 2
+ORDER BY title DESC, rental_rate ASC
 
 SELECT * FROM customer
 ORDER BY first_name
