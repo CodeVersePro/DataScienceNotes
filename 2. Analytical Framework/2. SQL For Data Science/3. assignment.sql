@@ -6,7 +6,7 @@ WHERE amount >= 11 and staff_id = 2
 
 /* how many films start with letter j*/
 
-SELECT * from film
+SELECT COUNT(*) from film
 WHERE left(title,1) = 'J'
 
 /* what customer has the highest customer id whose name start with 'E' and has address id lower then 500 */
