@@ -25,3 +25,26 @@ ORDER BY SUM(amount) DESC
 
 /* Full outer JOIN for union */
 
+select customer.customer_id,payment_id, first_name, last_name, amount from payment
+FULL OUTER JOIN customer
+ON customer.customer_id = payment.customer_id
+
+
+select customer.customer_id,payment_id, first_name, last_name, amount from payment
+FULL OUTER JOIN customer
+ON customer.customer_id = payment.customer_id
+WHERE customer.customer_id  is NULL or payment.payment_id is NULL
+
+/* ther are no customer with 0 payment  confirming it*/
+
+SELECT COUNT(distinct customer_id) from customer
+SELECT COUNT(distinct customer_id) FROM payment
+
+
+
+/* Left outer join*/
+
+SELECT film.film_id, inventory_id, title, store_id from film
+LEFT OUTER JOIN inventory
+ON film.film_id = inventory.film_id
+WHERE inventory.inventory_id is NULL
