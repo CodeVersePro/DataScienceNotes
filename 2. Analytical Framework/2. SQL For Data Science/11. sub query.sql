@@ -57,6 +57,14 @@ GROUP BY customer_id
 HAVING sum(amount) > 11)
 
 
+/* is it possible to do it simply bu inner join lets try */
+
+select customer.customer_id,first_name, last_name, sum(amount) from customer
+inner JOIN payment
+on customer.customer_id = payment.customer_id
+GROUP BY customer.customer_id
+HAVING sum(amount) > 11
+
 
 
 
