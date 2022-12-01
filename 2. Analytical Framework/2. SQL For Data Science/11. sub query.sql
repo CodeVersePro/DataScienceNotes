@@ -37,6 +37,26 @@ WHERE film_id IN(SELECT film_id FROM rental
 INNER JOIN inventory
 on rental.inventory_id = inventory.inventory_id
 WHERE rental.rental_date BETWEEN '2005-05-29' and '2005-05-30')
+ORDER BY film_id DESC
 
 
 /* above is the example of super subquery */
+
+/* problem is to find first and last name of customer who have spent more then 11 dollers */
+
+SELECT customer_id from payment
+GROUP BY customer_id
+HAVING sum(amount) > 11
+
+SELECT customer.customer_id,first_name, last_name , sum(amount) FROM customer
+inner JOIN payment
+on customer.customer_id = payment.customer_id
+GROUP BY customer.customer_id
+HAVING customer.customer_id in (SELECT customer_id from payment
+GROUP BY customer_id
+HAVING sum(amount) > 11)
+
+
+
+
+
