@@ -34,26 +34,21 @@ VALUES
 
 SELECT * from department
 
-create TEMPORARY TABLE employee_data2 as
-SELECT salary.employee_id,department_id, amount, extract(month from pay_date) as Month,
-round(avg(amount)  over(partition by department_id),2) as avg_salary_dpt
+create TEMPORARY TABLE salary_comp as
+SELECT distinct department.department_id ,amount, to_char(pay_date, 'yyyy-mm') as month,
+round(avg(amount) over(PARTITION BY extract(month from pay_date), department_id) ,2) as month_dpt_avg,
+round(avg(amount) over(PARTITION BY extract(month from pay_date)) ,2)as month_avg_company
 from salary
-INNER JOIN department
-on salary.employee_id = department.employee_id
+inner JOIN department
+on salary.employee_id = department.department_id
+order by to_char(pay_date, 'yyyy-mm')
 
-select * from employee_data2
-
-CREATE TEMPORARY TABLE employee_data3 as
-SELECT salary.employee_id,department_id, amount, extract(month from pay_date) as Month,
-round(avg(amount)  over(partition by department_id),2) as avg_salary_dpt,
-round(avg(amount) over(),2) as average
-from salary
-INNER JOIN department
-on salary.employee_id = department.employee_id
-
-
-SELECT * from employee_data3
-
+select distinct month,department_id, 
+case when month_dpt_avg = month_avg_company Then 'Same'
+WHEN month_dpt_avg > month_avg_company THEN 'Higher'
+ELSE 'Lower' END as Comparision
+from salary_comp
+order by month
 
 
 
